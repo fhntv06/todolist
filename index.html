@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todo</title>
+	<link type="image/x-icon" rel="shortcut icon" href="img/notebook.png">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id="app">
+		<div class="container" >
+			<h2>Название заметки</h2>
+			<input class="dataTitle titleTodo container-task" type="input" placeholder="Введите текст" maxlength="35" v-model="new_titles_todo.title">	
+			<h2>Список задач</h2>
+			<ul class="list-task" style="width: 100%;">
+				<div class="container-task">
+					<input class="dataTitle taskE" type="input" placeholder="Введите текст" v-model="new_titles_todo.task">
+				</div>
+			</ul>
+			<button id="btnTask" class="btn" @click="addInputTask">+ Добавить задачу</button>
+			<br>
+			<br>
+			<hr>
+			<button class="btn" @click="addContainer">+ Добавить заметку</button>
+			<br>
+			<br>
+			<hr>
+			<br>
+			<div class="container-data" v-for="(data, index) in titles_todo" :key="index">
+				<div style="display: flex; flex-direction: row; align-items: center;">
+					<p class="pNumber">Заметка №{{index + 1}}</p>
+					<div class="container-task-content" >
+						<div class="dataTitle">
+							<h3>{{data.title}}</h3>
+							<div style="display: flex;">
+								<a class="edit-link" href="edit/edit.html" @click="editTodo(index)">
+									<img class="dataTitle-img" title="Редактировать"src="https://img.icons8.com/ios/50/000000/pencil.png"/>
+								</a>
+								<img class="dataTitle-img"title="Удалить"src="https://img.icons8.com/ios/50/000000/trash.svg" @click="modalActive(index)"/>
+							</div>
+						</div>
+						<ul class="dataTitle list-items" style="flex-direction: column;" v-html="data.task"></ul>
+					</div>
+				</div>
+				<div class="list-buttons removeContainer">
+					<h5>Удалить заметку?</h5>
+					<button class="btn"  @click="removeContainer(index)">Да!</button>
+					<button class="btn"  @click="modalActive(index)">Нет</button>
+				</div>
+			</div>	
+		</div>
+	</div>
+	
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<script type="text/javascript" src="main.js"></script>
+
+	<script>
+		
+	</script>
+</body>
+</html>

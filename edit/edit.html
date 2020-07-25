@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todo</title>
+	<link type="image/x-icon" rel="shortcut icon" href="../img/notebook.png">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+
+	<style>
+		dialog {
+			position: static;
+			justify-content: center;
+			align-items: center;
+			top: 0;
+			border: none;
+		}
+	   </style>
+</head>
+<body>
+	<div id="app">
+		<div class="container" v-for="(data, index) in edit_todo" :key="index">
+			<h3>Редактирование заметки №{{data.index + 1}}</h3>
+			<br>
+			<input class="dataTitle container-task title" type="input" placeholder="Введите название" :value="data.title">
+			<ul class="list-task list-items" v-html="data.task"></ul>
+			<br>
+			<ul class="dataTitle">
+				<li>
+					<button id="openDialogSave" class="btn">Сохранить</button></a>
+				</li>
+				<li>
+					<button id="btnTask" class="btn" @click="addInputTask">+ Добавить задачу</button>
+				</li>
+				<li>
+					<button  id="openDialogNotice" class="btn">Отменить</button>
+				</li>
+			</ul>
+			<div class="list-buttons noticeContainer">
+				<h5>Отменить редактирование?</h5>
+				<a style="width: 100%;" href="../index.html"><button class="btn">Да!</button></a>
+				<button id="closeDialogNotice" class="btn">Нет</button>
+			</div>
+			<div class="list-buttons saveContainer">
+				<h5>Сохранить изменения?</h5>
+				<a style="width: 100%;" href="../index.html"><button class="btn" @click="saveTodo">Да!</button></a>
+				<button id="closeDialogSave" class="btn">Нет</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<script type="text/javascript" src="../main.js"></script>
+
+	<script>
+		let saveContainer = document.querySelector(".saveContainer");
+		let noticeContainer = document.querySelector('.noticeContainer');
+		document.querySelector('#openDialogNotice').onclick = function() {
+			noticeContainer.classList.add("active");
+		}
+		document.querySelector('#openDialogSave').onclick = function() {
+			saveContainer.classList.add("active");
+		}
+		document.querySelector('#closeDialogNotice').onclick = function() {
+			noticeContainer.classList.remove("active");
+		}
+		document.querySelector('#closeDialogSave').onclick = function() {
+			saveContainer.classList.remove("active");
+		}
+	</script>
+</body>
+</html>
