@@ -29,24 +29,24 @@
 			<br>
 			<ul class="dataTitle">
 				<li>
-					<button id="openDialogSave" class="btn">Сохранить</button></a>
+					<button class="dialogSave btn">Сохранить</button></a>
 				</li>
 				<li>
 					<button id="btnTask" class="btn" @click="addInputTask">+ Добавить задачу</button>
 				</li>
 				<li>
-					<button  id="openDialogNotice" class="btn">Отменить</button>
+					<button  class="dialogNotice btn">Отменить</button>
 				</li>
 			</ul>
 			<div class="list-buttons noticeContainer">
 				<h5>Отменить редактирование?</h5>
 				<a style="width: 100%;" href="../index.html"><button class="btn">Да!</button></a>
-				<button id="closeDialogNotice" class="btn">Нет</button>
+				<button class="dialogNotice btn">Нет</button>
 			</div>
 			<div class="list-buttons saveContainer">
 				<h5>Сохранить изменения?</h5>
 				<a style="width: 100%;" href="../index.html"><button class="btn" @click="saveTodo">Да!</button></a>
-				<button id="closeDialogSave" class="btn">Нет</button>
+				<button class="dialogSave btn">Нет</button>
 			</div>
 		</div>
 	</div>
