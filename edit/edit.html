@@ -56,20 +56,20 @@
 	<script type="text/javascript" src="../main.js"></script>
 
 	<script>
-		let saveContainer = document.querySelector(".saveContainer");
-		let noticeContainer = document.querySelector('.noticeContainer');
-		document.querySelector('#openDialogNotice').onclick = function() {
-			noticeContainer.classList.add("active");
+		const saveContainer = document.querySelector(".saveContainer");
+		const noticeContainer = document.querySelector('.noticeContainer');
+		const dialogSave = document.querySelector(".dialogSave");
+		const dialogNotice = document.querySelector(".dialogNotice");
+		function dialog(){
+			let target = event.target;
+			if(target.className == "dialogNotice btn"){
+				noticeContainer.classList.toggle("active");
+			}else{
+				saveContainer.classList.toggle("active");
+			}
 		}
-		document.querySelector('#openDialogSave').onclick = function() {
-			saveContainer.classList.add("active");
-		}
-		document.querySelector('#closeDialogNotice').onclick = function() {
-			noticeContainer.classList.remove("active");
-		}
-		document.querySelector('#closeDialogSave').onclick = function() {
-			saveContainer.classList.remove("active");
-		}
+		dialogNotice.addEventListener("click", dialog);
+		dialogSave.addEventListener("click", dialog);
 	</script>
 </body>
 </html>
