@@ -29,24 +29,24 @@
 			<br>
 			<ul class="dataTitle">
 				<li>
-					<button class="dialogSave btn">Сохранить</button></a>
+					<button id="openDialogSave" class="btn">Сохранить</button></a>
 				</li>
 				<li>
 					<button id="btnTask" class="btn" @click="addInputTask">+ Добавить задачу</button>
 				</li>
 				<li>
-					<button  class="dialogNotice btn">Отменить</button>
+					<button  id="openDialogNotice" class="btn">Отменить</button>
 				</li>
 			</ul>
 			<div class="list-buttons noticeContainer">
 				<h5>Отменить редактирование?</h5>
 				<a style="width: 100%;" href="../index.html"><button class="btn">Да!</button></a>
-				<button class="dialogNotice btn">Нет</button>
+				<button id="closeDialogNotice" class="btn">Нет</button>
 			</div>
 			<div class="list-buttons saveContainer">
 				<h5>Сохранить изменения?</h5>
 				<a style="width: 100%;" href="../index.html"><button class="btn" @click="saveTodo">Да!</button></a>
-				<button class="dialogSave btn">Нет</button>
+				<button id="closeDialogSave" class="btn">Нет</button>
 			</div>
 		</div>
 	</div>
@@ -56,20 +56,20 @@
 	<script type="text/javascript" src="../main.js"></script>
 
 	<script>
-		const saveContainer = document.querySelector(".saveContainer");
-		const noticeContainer = document.querySelector('.noticeContainer');
-		const dialogSave = document.querySelector(".dialogSave");
-		const dialogNotice = document.querySelector(".dialogNotice");
-		function dialog(){
-			let target = event.target;
-			if(target.className == "dialogNotice btn"){
-				noticeContainer.classList.toggle("active");
-			}else{
-				saveContainer.classList.toggle("active");
-			}
+		let saveContainer = document.querySelector(".saveContainer");
+		let noticeContainer = document.querySelector('.noticeContainer');
+		document.querySelector('#openDialogNotice').onclick = function() {
+			noticeContainer.classList.add("active");
 		}
-		dialogNotice.addEventListener("click", dialog);
-		dialogSave.addEventListener("click", dialog);
+		document.querySelector('#openDialogSave').onclick = function() {
+			saveContainer.classList.add("active");
+		}
+		document.querySelector('#closeDialogNotice').onclick = function() {
+			noticeContainer.classList.remove("active");
+		}
+		document.querySelector('#closeDialogSave').onclick = function() {
+			saveContainer.classList.remove("active");
+		}
 	</script>
 </body>
 </html>
